@@ -5,16 +5,19 @@ MysteriumRPG
 ├─ CNAME
 ├─ data
 │  ├─ img
+│  │  └─ magia.png
 │  ├─ js
 │  │  ├─ bd
 │  │  │  └─ supabase.js
 │  │  ├─ fichaJS
 │  │  └─ indexJS
 │  │     └─ index.js
-│  └─ json
-│     └─ indexJson
-│        ├─ calendarioEscolar.json
-│        └─ comunicadosEscolar.json
+│  ├─ json
+│  │  └─ indexJson
+│  │     ├─ calendarioEscolar.json
+│  │     └─ comunicadosEscolar.json
+│  ├─ musica
+│  └─ pdf
 ├─ Hieararquia.md
 ├─ index.html
 ├─ mestre
