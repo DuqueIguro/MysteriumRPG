@@ -1,26 +1,28 @@
 /* ============================================================
    ACADEMIA Mysterium — indexEffects.css
-   Every glow, flicker, shimmer, rotation and spark lives here.
+   Aqui ficam todos os brilhos, tremeluzidos, reflexos, rotações e faíscas.
    ============================================================ */
 
+
+   
 /* ---------------------------------------------------------
-   1. Enchanted frame — animated conic-gradient border glow
-      applied to every .panel via a rotating ::before mask
+   1. Quadro encantado — brilho animado da borda com gradiente cônico
+      aplicado a cada .panel por meio de uma máscara ::before rotativa
    --------------------------------------------------------- */
-.panel::before{
+.panel::before {
   content: "";
   position: absolute;
   inset: -1px;
   padding: 1px;
   border-radius: var(--radius);
-  background: conic-gradient(from var(--frame-angle,0deg),
-    var(--arcane-gold) 0deg,
-    transparent 40deg,
-    var(--mystic-violet) 120deg,
-    transparent 160deg,
-    var(--ether-teal) 240deg,
-    transparent 280deg,
-    var(--arcane-gold) 360deg);
+  background: conic-gradient(from var(--frame-angle, 0deg),
+      var(--arcane-gold) 0deg,
+      transparent 40deg,
+      var(--mystic-violet) 120deg,
+      transparent 160deg,
+      var(--ether-teal) 240deg,
+      transparent 280deg,
+      var(--arcane-gold) 360deg);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
@@ -29,188 +31,358 @@
   animation: frame-spin 10s linear infinite;
   pointer-events: none;
 }
-@property --frame-angle{
+
+@property --frame-angle {
   syntax: '<angle>';
   inherits: false;
   initial-value: 0deg;
 }
-@keyframes frame-spin{
-  from{ --frame-angle: 0deg; }
-  to{ --frame-angle: 360deg; }
+
+@keyframes frame-spin {
+  from {
+    --frame-angle: 0deg;
+  }
+
+  to {
+    --frame-angle: 360deg;
+  }
 }
 
-.panel::after{
-  content:"";
+.panel::after {
+  content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  box-shadow: inset 0 0 40px rgba(155,107,255,.06);
+  box-shadow: inset 0 0 40px rgba(155, 107, 255, .06);
   animation: panel-breathe 6s ease-in-out infinite;
 }
-@keyframes panel-breathe{
-  0%,100%{ box-shadow: inset 0 0 40px rgba(155,107,255,.05); }
-  50%{ box-shadow: inset 0 0 60px rgba(238,194,83,.09); }
+
+@keyframes panel-breathe {
+
+  0%,
+  100% {
+    box-shadow: inset 0 0 40px rgba(155, 107, 255, .05);
+  }
+
+  50% {
+    box-shadow: inset 0 0 60px rgba(238, 194, 83, .09);
+  }
 }
 
-/* scroll-reveal entrance for panels */
-.panel{
+/* Entrada suave dos painéis ao entrar na tela. */
+.panel {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity .8s ease, transform .8s ease;
 }
-.panel.in-view{
+
+.panel.in-view {
   opacity: 1;
   transform: translateY(0);
 }
 
 /* ---------------------------------------------------------
-   2. Brand mark flicker + title shimmer
+   2. Brilho do símbolo da marca e cintilação do título
    --------------------------------------------------------- */
-.brand-mark{
-  filter: drop-shadow(0 0 6px rgba(238,194,83,.65));
+.brand-mark {
+  filter: drop-shadow(0 0 6px rgba(238, 194, 83, .65));
   animation: mark-pulse 3.2s ease-in-out infinite;
 }
-@keyframes mark-pulse{
-  0%,100%{ filter: drop-shadow(0 0 4px rgba(238,194,83,.5)); transform: rotate(0deg); }
-  50%{ filter: drop-shadow(0 0 14px rgba(238,194,83,.9)); transform: rotate(3deg); }
+
+@keyframes mark-pulse {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 4px rgba(238, 194, 83, .5));
+    transform: rotate(0deg);
+  }
+
+  50% {
+    filter: drop-shadow(0 0 14px rgba(238, 194, 83, .9));
+    transform: rotate(3deg);
+  }
 }
 
-.brand-text h1{
+.brand-text h1 {
   background: linear-gradient(100deg,
-    var(--arcane-gold) 20%, var(--parchment) 40%, var(--arcane-gold) 60%, var(--mystic-violet) 80%);
+      var(--arcane-gold) 20%, var(--parchment) 40%, var(--arcane-gold) 60%, var(--mystic-violet) 80%);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: shimmer-text 6s linear infinite;
-  text-shadow: 0 0 24px rgba(238,194,83,.25);
-}
-@keyframes shimmer-text{
-  0%{ background-position: 0% 50%; }
-  100%{ background-position: 300% 50%; }
+  text-shadow: 0 0 24px rgba(238, 194, 83, .25);
 }
 
-.access-badge .dot{ animation: dot-blink 2.4s ease-in-out infinite; }
-@keyframes dot-blink{
-  0%,100%{ opacity: 1; transform: scale(1); }
-  50%{ opacity: .35; transform: scale(.7); }
+@keyframes shimmer-text {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
+.access-badge .dot {
+  animation: dot-blink 2.4s ease-in-out infinite;
+}
+
+@keyframes dot-blink {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: .35;
+    transform: scale(.7);
+  }
 }
 
 /* ---------------------------------------------------------
-   3. Section eyebrow rune spin
+   3. Rotação da runa do subtítulo
    --------------------------------------------------------- */
-.eyebrow .rune{
+.eyebrow .rune {
   display: inline-block;
   animation: rune-spin 4s linear infinite;
 }
-@keyframes rune-spin{
-  from{ transform: rotate(0deg); }
-  to{ transform: rotate(360deg); }
+
+@keyframes rune-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ---------------------------------------------------------
-   4. Magic circle — layered concentric rotation
+   4. Círculo mágico — rotações concêntricas em camadas
    --------------------------------------------------------- */
-.sigil-ring-outer{ animation: spin-cw 22s linear infinite; transform-origin: 50% 50%; }
-.sigil-ring-mid{ animation: spin-ccw 15s linear infinite; transform-origin: 50% 50%; }
-.sigil-ring-inner{ animation: spin-cw 9s linear infinite; transform-origin: 50% 50%; }
-.sigil-core{ animation: core-pulse 2.6s ease-in-out infinite; transform-origin: 50% 50%; }
-.sigil-spark{ animation: spark-twinkle 1.8s ease-in-out infinite; }
-
-@keyframes spin-cw{ from{ transform: rotate(0deg); } to{ transform: rotate(360deg); } }
-@keyframes spin-ccw{ from{ transform: rotate(360deg); } to{ transform: rotate(0deg); } }
-@keyframes core-pulse{
-  0%,100%{ opacity: .75; transform: scale(1); }
-  50%{ opacity: 1; transform: scale(1.06); }
-}
-@keyframes spark-twinkle{
-  0%,100%{ opacity: .2; }
-  50%{ opacity: 1; }
+.sigil-ring-outer {
+  animation: spin-cw 22s linear infinite;
+  transform-origin: 50% 50%;
 }
 
-.sigil-stage svg{
-  filter: drop-shadow(0 0 22px rgba(155,107,255,.35)) drop-shadow(0 0 40px rgba(238,194,83,.15));
+.sigil-ring-mid {
+  animation: spin-ccw 15s linear infinite;
+  transform-origin: 50% 50%;
+}
+
+.sigil-ring-inner {
+  animation: spin-cw 9s linear infinite;
+  transform-origin: 50% 50%;
+}
+
+.sigil-core {
+  animation: core-pulse 2.6s ease-in-out infinite;
+  transform-origin: 50% 50%;
+}
+
+.sigil-spark {
+  animation: spark-twinkle 1.8s ease-in-out infinite;
+}
+
+@keyframes spin-cw {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-ccw {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes core-pulse {
+
+  0%,
+  100% {
+    opacity: .75;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes spark-twinkle {
+
+  0%,
+  100% {
+    opacity: .2;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.sigil-stage svg {
+  filter: drop-shadow(0 0 22px rgba(155, 107, 255, .35)) drop-shadow(0 0 40px rgba(238, 194, 83, .15));
 }
 
 /* ---------------------------------------------------------
-   5. Motto typewriter cursor
+   5. Cursor do mote com efeito de máquina de escrever
    --------------------------------------------------------- */
-.type-cursor{
+.type-cursor {
   display: inline-block;
   margin-left: 2px;
   animation: caret-blink 1s step-end infinite;
 }
-@keyframes caret-blink{ 50%{ opacity: 0; } }
+
+@keyframes caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
 
 /* ---------------------------------------------------------
-   6. Notice list — subtle ember drift on the left rule
+   6. Lista de avisos — leve desvio de chama na borda esquerda
    --------------------------------------------------------- */
-.notice{ transition: transform .3s ease; }
-.notice:hover{ transform: translateX(4px); }
-.notice::before{
-  content:"";
+.notice {
+  transition: transform .3s ease;
+}
+
+.notice:hover {
+  transform: translateX(4px);
+}
+
+.notice::before {
+  content: "";
   position: absolute;
-  left: -3px; top: 0;
-  width: 5px; height: 100%;
+  left: -3px;
+  top: 0;
+  width: 5px;
+  height: 100%;
   background: currentColor;
   opacity: 0;
   filter: blur(4px);
   transition: opacity .3s ease;
 }
-.notice:hover::before{ opacity: .5; }
+
+.notice:hover::before {
+  opacity: .5;
+}
 
 /* ---------------------------------------------------------
-   7. Schedule rows — arcane sweep highlight on hover
+   7. Linhas do cronograma — destaque arcano ao passar o mouse
    --------------------------------------------------------- */
-.schedule-table tbody tr{ position: relative; transition: background .25s ease; }
-.schedule-table tbody tr:hover{ background: rgba(155,107,255,.07); }
-.schedule-table tbody tr:hover .day{ text-shadow: 0 0 10px rgba(238,194,83,.8); }
+.schedule-table tbody tr {
+  position: relative;
+  transition: background .25s ease;
+}
+
+.schedule-table tbody tr:hover {
+  background: rgba(155, 107, 255, .07);
+}
+
+.schedule-table tbody tr:hover .day {
+  text-shadow: 0 0 10px rgba(238, 194, 83, .8);
+}
 
 /* ---------------------------------------------------------
-   8. Access grid — glowing enchanted buttons
+   8. Grade de acesso — botões encantados com brilho
    --------------------------------------------------------- */
-.access-btn{ transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease, color .25s ease; }
-.access-btn::before{
-  content:"";
+.access-btn {
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease, color .25s ease;
+}
+
+.access-btn::before {
+  content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 120%, rgba(155,107,255,.35), transparent 60%);
+  background: radial-gradient(circle at 50% 120%, rgba(155, 107, 255, .35), transparent 60%);
   opacity: 0;
   transition: opacity .35s ease;
 }
-.access-btn .icon{ transition: transform .35s ease, filter .35s ease; }
-.access-btn:hover{
+
+.access-btn .icon {
+  transition: transform .35s ease, filter .35s ease;
+}
+
+.access-btn:hover {
   transform: translateY(-4px);
   border-color: var(--arcane-gold);
-  box-shadow: 0 10px 30px rgba(238,194,83,.18), 0 0 0 1px rgba(238,194,83,.25) inset;
+  box-shadow: 0 10px 30px rgba(238, 194, 83, .18), 0 0 0 1px rgba(238, 194, 83, .25) inset;
   color: var(--arcane-gold);
 }
-.access-btn:hover::before{ opacity: 1; }
-.access-btn:hover .icon{ transform: scale(1.2) rotate(-8deg); filter: drop-shadow(0 0 8px var(--arcane-gold)); }
-.access-btn.exit:hover{
+
+.access-btn:hover::before {
+  opacity: 1;
+}
+
+.access-btn:hover .icon {
+  transform: scale(1.2) rotate(-8deg);
+  filter: drop-shadow(0 0 8px var(--arcane-gold));
+}
+
+.access-btn.exit:hover {
   border-color: var(--blood-ember);
-  box-shadow: 0 10px 30px rgba(226,84,58,.2), 0 0 0 1px rgba(226,84,58,.3) inset;
+  box-shadow: 0 10px 30px rgba(226, 84, 58, .2), 0 0 0 1px rgba(226, 84, 58, .3) inset;
   color: var(--blood-ember);
 }
-.access-btn.exit:hover .icon{ filter: drop-shadow(0 0 8px var(--blood-ember)); }
 
-/* ---------------------------------------------------------
-   9. Art chips — faint pulsing glow, staggered
-   --------------------------------------------------------- */
-.art-chip{ animation: chip-glow 5s ease-in-out infinite; }
-.art-chip:nth-child(1){ animation-delay: 0s; }
-.art-chip:nth-child(2){ animation-delay: .8s; }
-.art-chip:nth-child(3){ animation-delay: 1.6s; }
-.art-chip:nth-child(4){ animation-delay: 2.4s; }
-@keyframes chip-glow{
-  0%,100%{ box-shadow: 0 0 0 rgba(238,194,83,0); border-color: var(--panel-border); }
-  50%{ box-shadow: 0 0 16px rgba(155,107,255,.18); border-color: var(--mystic-violet); }
+.access-btn.exit:hover .icon {
+  filter: drop-shadow(0 0 8px var(--blood-ember));
 }
 
 /* ---------------------------------------------------------
-   10. Cursor sparkle trail (elements spawned by index.js)
+   9. Chips artísticos — brilho sutil pulsante, escalonado
    --------------------------------------------------------- */
-.spark-trail{
+.art-chip {
+  animation: chip-glow 5s ease-in-out infinite;
+}
+
+.art-chip:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.art-chip:nth-child(2) {
+  animation-delay: .8s;
+}
+
+.art-chip:nth-child(3) {
+  animation-delay: 1.6s;
+}
+
+.art-chip:nth-child(4) {
+  animation-delay: 2.4s;
+}
+
+@keyframes chip-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(238, 194, 83, 0);
+    border-color: var(--panel-border);
+  }
+
+  50% {
+    box-shadow: 0 0 16px rgba(155, 107, 255, .18);
+    border-color: var(--mystic-violet);
+  }
+}
+
+/* ---------------------------------------------------------
+   10. Trilha de faísca do cursor (elementos criados por index.js)
+   --------------------------------------------------------- */
+.spark-trail {
   position: fixed;
   z-index: 9999;
   width: 5px;
@@ -220,15 +392,23 @@
   background: radial-gradient(circle, #fff, var(--arcane-gold) 60%, transparent 70%);
   animation: spark-fade .9s ease-out forwards;
 }
-@keyframes spark-fade{
-  0%{ opacity: 1; transform: scale(1) translateY(0); }
-  100%{ opacity: 0; transform: scale(.2) translateY(-18px); }
+
+@keyframes spark-fade {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(.2) translateY(-18px);
+  }
 }
 
 /* ---------------------------------------------------------
-   11. Footer rune divider
+   11. Divisor de runa do rodapé
    --------------------------------------------------------- */
-.site-footer .rune-divider{
+.site-footer .rune-divider {
   display: block;
   margin: 0 auto 14px;
   width: 120px;
@@ -236,11 +416,13 @@
   background: linear-gradient(90deg, transparent, var(--arcane-gold), transparent);
   position: relative;
 }
-.site-footer .rune-divider::after{
+
+.site-footer .rune-divider::after {
   content: "✦";
   position: absolute;
-  left: 50%; top: 50%;
-  transform: translate(-50%,-50%);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   color: var(--arcane-gold);
   font-size: .8rem;
   background: var(--void);
