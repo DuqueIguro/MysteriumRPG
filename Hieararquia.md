@@ -6,11 +6,20 @@ MysteriumRPG
 ├─ data
 │  ├─ img
 │  ├─ js
+│  │  ├─ bd
+│  │  │  └─ supabase.js
+│  │  ├─ ficha
+│  │  └─ index.js
 │  └─ json
+├─ Hieararquia.md
 ├─ index.html
 ├─ mestre
 ├─ pages
+│  └─ ficha.html
 └─ styles
+   ├─ ficha
+   │  ├─ ficha.css
+   │  └─ fichaEffects.css
    └─ index
       ├─ index.css
       └─ indexEffects.css
