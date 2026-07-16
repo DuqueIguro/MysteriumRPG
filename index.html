@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academia Mysterium — Portal do Aprendiz</title>
+  <meta name="description"
+    content="Academia Mysterium, a instituição central de ensino de magia. Comunicados, cronograma de aulas e acesso rápido ao portal do aprendiz.">
+  <link rel="stylesheet" href="styles/index/index.css">
+  <link rel="stylesheet" href="styles/index/indexEffects.css">
+</head>
+
+<body>
+
+  <canvas id="arcane-canvas" aria-hidden="true"></canvas>
+  <div class="veil" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="21" stroke="#eec253" stroke-width="1.4" />
+        <path d="M24 6 L29 21 L44 24 L29 27 L24 42 L19 27 L4 24 L19 21 Z" fill="#eec253" opacity=".85" />
+      </svg>
+      <div class="brand-text">
+        <h1>Academia Mysterium</h1>
+        <p class="sub">Arcano &middot; Sistema de Ensino Espiritual</p>
+      </div>
+    </div>
+    <div class="access-badge">
+      <span class="dot"></span> Acesso: <b>Despertado</b>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- ================= SOBRE A INSTITUIÇÃO ================= -->
+    <section class="panel">
+      <h2><span class="glyph">&#10022;</span> Sobre a Instituição</h2>
+
+      <div class="hero-grid">
+        <div class="sigil-stage">
+          <svg viewBox="0 0 240 240" aria-hidden="true">
+            <g class="sigil-ring-outer">
+              <circle cx="120" cy="120" r="112" stroke="#eec253" stroke-width="1.2" fill="none"
+                stroke-dasharray="2 6" />
+              <g class="sigil-spark">
+                <circle cx="120" cy="8" r="3" fill="#eec253" />
+              </g>
+              <g class="sigil-spark" style="animation-delay:.4s">
+                <circle cx="232" cy="120" r="3" fill="#eec253" />
+              </g>
+              <g class="sigil-spark" style="animation-delay:.8s">
+                <circle cx="120" cy="232" r="3" fill="#eec253" />
+              </g>
+              <g class="sigil-spark" style="animation-delay:1.2s">
+                <circle cx="8" cy="120" r="3" fill="#eec253" />
+              </g>
+            </g>
+            <g class="sigil-ring-mid">
+              <polygon points="120,30 197,75 197,165 120,210 43,165 43,75" fill="none" stroke="#9b6bff"
+                stroke-width="1.2" opacity=".7" />
+            </g>
+            <g class="sigil-ring-inner">
+              <circle cx="120" cy="120" r="62" stroke="#52e0c4" stroke-width="1.4" fill="none" />
+              <path d="M120 58 L152 120 L120 182 L88 120 Z" stroke="#52e0c4" stroke-width="1" fill="none"
+                opacity=".8" />
+            </g>
+            <circle class="sigil-core" cx="120" cy="120" r="14" fill="#eec253" opacity=".85" />
+          </svg>
+        </div>
+
+        <div class="hero-copy">
+          <p>Fundada há mais de <strong>mil anos</strong> pelo Arquimago Yamamoto, a <strong>Academia Mysterium</strong>
+            é o pilar central de formação dos magos que protegem a fronteira entre o mundo dos vivos e o Além-véu.</p>
+          <p>Nossa missão é lapidar aprendizes de alto potencial arcano em <span
+              class="accent-violet">Thaumaturgos</span> de elite, versados nas quatro artes fundamentais da magia:</p>
+
+          <div class="arts-row">
+            <div class="art-chip"><span class="name">Evocação</span><span class="desc">Fogo &amp; Conjuração</span>
+            </div>
+            <div class="art-chip"><span class="name">Encantamento</span><span class="desc">Selos &amp; Wards</span>
+            </div>
+            <div class="art-chip"><span class="name">Transmutação</span><span class="desc">Matéria &amp; Forma</span>
+            </div>
+            <div class="art-chip"><span class="name">Adivinhação</span><span class="desc">Visão &amp; Sina</span></div>
+          </div>
+
+          <p><span class="accent-teal">Nenhum feitiço é gratuito</span> — todo aprendiz aprende primeiro o preço do
+            poder antes de empunhá-lo.</p>
+        </div>
+      </div>
+
+      <p class="motto" data-typewriter="PELO SABER, DOMAMOS O IMPOSSÍVEL."></p>
+    </section>
+
+    <!-- ================= COMUNICADOS + CRONOGRAMA ================= -->
+    <div class="split-grid">
+
+      <section class="panel">
+        <h2><span class="eyebrow"><span class="rune">&#9670;</span></span>&nbsp;Comunicados Oficiais</h2>
+        <div class="notice-list">
+          <div class="notice">
+            <span class="tag">Turma Regular &amp; Avançada</span>
+            <p><strong>Prova de Encerramento do Ano Letivo:</strong> 22/05. Revisar todo o conteúdo ministrado durante o
+              ano, incluindo Evocação, Encantamento, Transmutação, Adivinhação, Controle de Mana, História do Véu,
+              Doutrina Arcana e Ética Mágica. Prova realizada em sala, com duração de 2 horas.</p>
+          </div>
+          <div class="notice violet">
+            <span class="tag">Boletins</span>
+            <p>A partir de 27/05, os boletins de desempenho estarão disponíveis na coordenação. Os aprendizes podem
+              agendar um horário para discutir seu progresso arcano e receber orientações para o próximo ciclo letivo.
+            </p>
+          </div>
+          <div class="notice ember">
+            <span class="tag">Reposição</span>
+            <p><strong>Trabalho de Reposição e Recuperação:</strong> aprendizes que perderam aulas devem preencher o
+              formulário de reposição disponível no Portal do Aprendiz. O trabalho deve ser entregue até 24/05 para
+              recuperação dos conteúdos perdidos.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2><span class="eyebrow"><span class="rune">&#9670;</span></span>&nbsp;Cronograma de Aulas</h2>
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th>Dia</th>
+              <th>Horário</th>
+              <th>Matéria / Ritual</th>
+              <th>Instrutor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="day">22/05</td>
+              <td class="time">08:00–11:00</td>
+              <td class="subject">Expedição ao Mundo dos Vivos — Avançada</td>
+              <td class="instructor">Tatsuma Shihōin</td>
+            </tr>
+            <tr>
+              <td class="day">22/05</td>
+              <td class="time">13:00–14:00</td>
+              <td class="subject">Prova Teórica de Encerramento — Regular e Avançada</td>
+              <td class="instructor">Capy-Sensei</td>
+            </tr>
+            <tr>
+              <td class="day">22/05</td>
+              <td class="time">14:00–15:00</td>
+              <td class="subject">Duelo de Mana (Atrito de Pressões) — Regular e Avançada</td>
+              <td class="instructor">Akio Murasame</td>
+            </tr>
+            <tr>
+              <td class="day">22/05</td>
+              <td class="time">15:00–18:00</td>
+              <td class="subject">Prova Prática Geral de Encerramento — Regular e Avançada</td>
+              <td class="instructor">Corpo Docente</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+    </div>
+
+    <!-- ================= ACESSO RÁPIDO ================= -->
+    <section class="panel">
+      <h2><span class="glyph">&#10022;</span> Acesso Rápido</h2>
+      <div class="access-grid">
+        <a class="access-btn" href="#" data-target="#"><span class="icon">&#9878;</span>Grimório de Notas</a>
+        <a class="access-btn" href="#" data-target="#"><span class="icon">&#128301;</span>Mural de Médias</a>
+        <a class="access-btn" href="#" data-target="#"><span class="icon">&#128213;</span>Grade Curricular</a>
+        <a class="access-btn" href="#" data-target="#"><span class="icon">&#128218;</span>Materiais de Estudo</a>
+        <a class="access-btn" href="#" data-target="#"><span class="icon">&#127963;</span>Secretaria Arcana</a>
+        <a class="access-btn" href="pages/ficha.html"><span class="icon">&#128100;</span>Portal do Aprendiz</a>
+        <a class="access-btn" href="#" data-target="#"><span class="icon">&#8635;</span>Trabalho de Reposição</a>
+        <a class="access-btn exit" href="#" data-target="#"><span class="icon">&#9760;</span>Sair do Sistema</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <span class="rune-divider"></span>
+    © 2026–2027 Arcano. Sistema de Ensino Mágico.
+  </footer>
+
+  <script src="data/js/indexJS/index.js"></script>
+</body>
+
+</html>

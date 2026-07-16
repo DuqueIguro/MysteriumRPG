@@ -1,0 +1,410 @@
+/* ============================================================
+   ACADEMIA Mysterium — index.css
+   Base structure, tokens, typography and layout.
+   Animation/particle logic lives in indexEffects.css
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root{
+  /* ---------- color tokens ---------- */
+  --void:            #0a0616;
+  --void-2:          #130a29;
+  --void-3:          #1c1038;
+  --panel:           #150c2c;
+  --panel-border:    #3a2a63;
+
+  --arcane-gold:      #eec253;
+  --arcane-gold-soft: #c99c3b;
+  --mystic-violet:    #9b6bff;
+  --mystic-violet-2:  #6f42d6;
+  --ether-teal:       #52e0c4;
+  --blood-ember:      #e2543a;
+
+  --parchment:        #efe4c8;
+  --parchment-dim:    #b9ac95;
+  --parchment-faint:  #8b7f9e;
+
+  --shadow-deep: 0 20px 60px rgba(0,0,0,.55);
+
+  /* ---------- type tokens ---------- */
+  --font-display: 'Cinzel Decorative', 'Cinzel', serif;
+  --font-head:    'Cinzel', serif;
+  --font-body:    'EB Garamond', Georgia, serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  --radius: 3px;
+}
+
+*{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  min-height: 100vh;
+  background: var(--void);
+  color: var(--parchment);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* canvas particle layer sits fixed behind everything */
+#arcane-canvas{
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.veil{
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(155,107,255,.14), transparent 70%),
+    radial-gradient(ellipse 50% 35% at 85% 90%, rgba(82,224,196,.08), transparent 70%),
+    radial-gradient(ellipse 50% 35% at 10% 85%, rgba(238,194,83,.07), transparent 70%);
+}
+
+a{ color: inherit; text-decoration: none; }
+
+.wrap{
+  position: relative;
+  z-index: 2;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px 24px 60px;
+}
+
+/* ---------- eyebrow / section label ---------- */
+.eyebrow{
+  font-family: var(--font-head);
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-size: .8rem;
+  color: var(--ether-teal);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.eyebrow .rune{ font-size: 1rem; color: var(--arcane-gold); }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header{
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 22px 24px 18px;
+  border-bottom: 1px solid var(--panel-border);
+  flex-wrap: wrap;
+}
+
+.brand{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-mark{
+  width: 46px;
+  height: 46px;
+  flex: none;
+}
+
+.brand-text h1{
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  letter-spacing: .06em;
+  color: var(--arcane-gold);
+}
+
+.brand-text .sub{
+  margin: 2px 0 0;
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--parchment-faint);
+}
+
+.access-badge{
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  letter-spacing: .04em;
+  padding: 9px 16px;
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  background: var(--panel);
+  color: var(--parchment-dim);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.access-badge b{ color: var(--ether-teal); font-weight: 600; }
+.access-badge .dot{
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--ether-teal);
+  box-shadow: 0 0 8px 2px var(--ether-teal);
+}
+
+/* ============================================================
+   PANEL — shared card shell used across the page
+   ============================================================ */
+.panel{
+  position: relative;
+  background: linear-gradient(180deg, var(--panel), var(--void-2));
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  padding: 30px 32px;
+  box-shadow: var(--shadow-deep);
+  margin-bottom: 28px;
+  overflow: hidden;
+}
+
+.panel > h2{
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+  letter-spacing: .06em;
+  color: var(--arcane-gold);
+  margin: 0 0 22px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--panel-border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.panel > h2 .glyph{ color: var(--mystic-violet); }
+
+/* ============================================================
+   HERO / SOBRE A INSTITUIÇÃO
+   ============================================================ */
+.hero-grid{
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.sigil-stage{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sigil-stage svg{ width: 100%; height: 100%; overflow: visible; }
+
+.hero-copy p{
+  margin: 0 0 16px;
+  color: var(--parchment-dim);
+  font-size: 1.02rem;
+}
+.hero-copy strong{ color: var(--arcane-gold); font-weight: 600; }
+.hero-copy .accent-violet{ color: var(--mystic-violet); font-weight: 600; }
+.hero-copy .accent-teal{ color: var(--ether-teal); font-weight: 600; }
+.hero-copy .accent-ember{ color: var(--blood-ember); font-weight: 600; }
+
+.arts-row{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 22px 0;
+}
+.art-chip{
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  padding: 10px 8px;
+  text-align: center;
+  background: rgba(255,255,255,.02);
+}
+.art-chip .name{
+  font-family: var(--font-head);
+  font-size: .82rem;
+  letter-spacing: .03em;
+  display: block;
+  margin-bottom: 2px;
+}
+.art-chip .desc{
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  color: var(--parchment-faint);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.motto{
+  margin-top: 26px;
+  text-align: center;
+  font-family: var(--font-head);
+  font-size: 1rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--parchment);
+  padding-top: 20px;
+  border-top: 1px dashed var(--panel-border);
+}
+.motto .type-cursor{ color: var(--arcane-gold); }
+
+/* ============================================================
+   TWO COLUMN — COMUNICADOS + CRONOGRAMA
+   ============================================================ */
+.split-grid{
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.notice-list{ display: flex; flex-direction: column; gap: 18px; }
+
+.notice{
+  position: relative;
+  padding: 4px 0 4px 16px;
+  border-left: 2px solid var(--arcane-gold-soft);
+}
+.notice .tag{
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  letter-spacing: .04em;
+  color: var(--void);
+  background: var(--arcane-gold);
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin-bottom: 6px;
+}
+.notice.ember{ border-left-color: var(--blood-ember); }
+.notice.ember .tag{ background: var(--blood-ember); color: var(--parchment); }
+.notice.violet{ border-left-color: var(--mystic-violet); }
+.notice.violet .tag{ background: var(--mystic-violet); color: var(--void); }
+.notice p{ margin: 0; font-size: .95rem; color: var(--parchment-dim); }
+
+/* schedule table */
+.schedule-table{
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .9rem;
+}
+.schedule-table thead th{
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ether-teal);
+  padding: 0 10px 10px;
+  border-bottom: 1px solid var(--panel-border);
+}
+.schedule-table tbody td{
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(58,42,99,.5);
+  vertical-align: top;
+  color: var(--parchment-dim);
+}
+.schedule-table tbody tr:last-child td{ border-bottom: none; }
+.schedule-table .day{
+  font-family: var(--font-mono);
+  color: var(--arcane-gold);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.schedule-table .time{ font-family: var(--font-mono); white-space: nowrap; color: var(--parchment-faint); }
+.schedule-table .subject{ color: var(--parchment); font-weight: 600; }
+.schedule-table .instructor{ font-style: italic; }
+
+/* ============================================================
+   ACESSO RÁPIDO
+   ============================================================ */
+.access-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.access-btn{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 22px 12px;
+  min-height: 92px;
+  text-align: center;
+  background: var(--void-2);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  color: var(--parchment);
+  font-family: var(--font-head);
+  font-size: .82rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+}
+.access-btn .icon{ font-size: 1.3rem; }
+.access-btn.exit{ border-color: var(--blood-ember); color: var(--blood-ember); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer{
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 30px 24px 50px;
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .05em;
+  color: var(--parchment-faint);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px){
+  .hero-grid{ grid-template-columns: 1fr; }
+  .sigil-stage{ max-width: 260px; margin: 0 auto; }
+  .split-grid{ grid-template-columns: 1fr; }
+  .arts-row{ grid-template-columns: repeat(2, 1fr); }
+  .access-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 520px){
+  .site-header{ flex-direction: column; align-items: flex-start; }
+  .panel{ padding: 22px 18px; }
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  *, *::before, *::after{
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+}
+
+/* ---------- focus visibility ---------- */
+a:focus-visible, button:focus-visible, .access-btn:focus-visible{
+  outline: 2px solid var(--ether-teal);
+  outline-offset: 3px;
+}

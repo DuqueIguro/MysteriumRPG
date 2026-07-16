@@ -8,9 +8,13 @@ MysteriumRPG
 │  ├─ js
 │  │  ├─ bd
 │  │  │  └─ supabase.js
-│  │  ├─ ficha
-│  │  └─ index.js
+│  │  ├─ fichaJS
+│  │  └─ indexJS
+│  │     └─ index.js
 │  └─ json
+│     └─ indexJson
+│        ├─ calendarioEscolar.json
+│        └─ comunicadosEscolar.json
 ├─ Hieararquia.md
 ├─ index.html
 ├─ mestre
